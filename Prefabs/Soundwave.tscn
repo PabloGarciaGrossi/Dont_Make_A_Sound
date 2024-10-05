@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://hhrxo17dn25k"]
+
+[ext_resource type="Script" path="res://Scripts/LightScripts/SoundWave.gd" id="1_iulss"]
+[ext_resource type="PackedScene" uid="uid://jwv7nte7qcg5" path="res://Prefabs/LightCollision.tscn" id="2_f31tl"]
+
+[node name="Soundwave" type="Node2D"]
+script = ExtResource("1_iulss")
+increasingVelocity = 50.0
+deceleration = 10.0
+collisionDetector = ExtResource("2_f31tl")
