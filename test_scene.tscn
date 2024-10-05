@@ -1179,6 +1179,7 @@ shadow_enabled = true
 texture = ExtResource("10_m2d38")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="CharacterBody2D/Camera2D/Control"]
+visible = false
 color = Color(0, 0, 0, 1)
 blend_mode = 2
 range_item_cull_mask = 0
