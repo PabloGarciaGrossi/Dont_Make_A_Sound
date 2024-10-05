@@ -30,7 +30,8 @@ func set_values(pos : Vector2):
 	antialised = true
 	start_angle = 0
 	end_angle = 360
-	point_count = 30
+	point_count = 10
+	
 	color = Color.WHITE
 	width = 5
 	current_increasingVelocity = increasingVelocity
@@ -62,5 +63,8 @@ func _process(delta):
 	else :
 		radius = 0
 		current_increasingVelocity = increasingVelocity
+		for i in range(listOfCollisions.size()):
+			if(listOfCollisions[i] != null):
+				listOfCollisions[i].reset()
 	queue_redraw()
 	

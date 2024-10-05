@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 
 @export var initial_size : float
@@ -17,5 +16,5 @@ func _process(delta):
 		current_size -= decreasing_speed * delta
 		scale = Vector2(current_size, current_size)
 	else:
-		current_size = initial_size
+		queue_free()
 	pass

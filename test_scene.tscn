@@ -1127,6 +1127,7 @@ frame = 5
 frame_progress = 0.593171
 
 [node name="Soundwave" parent="CharacterBody2D" instance=ExtResource("8_21o7i")]
+increasingVelocity = 75.0
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 zoom = Vector2(3, 3)
@@ -1179,10 +1180,8 @@ shadow_enabled = true
 texture = ExtResource("10_m2d38")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="CharacterBody2D/Camera2D/Control"]
-visible = false
 color = Color(0, 0, 0, 1)
 blend_mode = 2
-range_item_cull_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 3)

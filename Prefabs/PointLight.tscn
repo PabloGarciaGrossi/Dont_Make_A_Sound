@@ -4,10 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/LightScripts/PointLight.gd" id="2_d0r0n"]
 
 [node name="PointLight" type="PointLight2D"]
-z_index = 5
-scale = Vector2(0.321568, 0.321568)
-energy = 0.62
+scale = Vector2(-0.000245, -0.000245)
+energy = 0.1
 texture = ExtResource("1_036f0")
 script = ExtResource("2_d0r0n")
-initial_size = 1.0
+initial_size = 2.0
 decreasing_speed = 1.0
