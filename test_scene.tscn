@@ -1,67 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://gfuj0ehnrm48"]
+[gd_scene load_steps=6 format=3 uid="uid://gfuj0ehnrm48"]
 
-[ext_resource type="Texture2D" uid="uid://d0mp624bdf5km" path="res://Sprites/JV/Idle/JV_Idle1.png" id="1_ssj53"]
-[ext_resource type="Script" path="res://Scripts/Character/CharacterMovement.gd" id="1_tkpwq"]
-[ext_resource type="Texture2D" uid="uid://b3t5kktoym534" path="res://Sprites/JV/Idle/JV_Idle2.png" id="2_vhfyx"]
-[ext_resource type="Texture2D" uid="uid://cpsqfm7374yfr" path="res://Sprites/JV/Idle/JV_Idle3.png" id="3_qw6cp"]
-[ext_resource type="Texture2D" uid="uid://b6hfesigpwa05" path="res://Sprites/JV/Idle/JV_Idle4.png" id="4_j8pke"]
-[ext_resource type="Texture2D" uid="uid://ccyenwtdfeo0q" path="res://Sprites/JV/Idle/JV_Idle5.png" id="5_oe28x"]
-[ext_resource type="Texture2D" uid="uid://dkebbsxi2f7bw" path="res://Sprites/JV/Idle/JV_Idle6.png" id="6_frlyq"]
-[ext_resource type="PackedScene" uid="uid://hhrxo17dn25k" path="res://Prefabs/Soundwave.tscn" id="8_21o7i"]
+[ext_resource type="PackedScene" uid="uid://duxhk0dlocol1" path="res://Prefabs/character.tscn" id="1_jy83b"]
 [ext_resource type="Texture2D" uid="uid://dnfa4pii80ls1" path="res://Sprites/Tilesets/City.png" id="8_eeivk"]
-[ext_resource type="Shader" path="res://Shaders/ColorQuantization.gdshader" id="8_k6csv"]
-[ext_resource type="Shader" path="res://Shaders/4LevelPosterization.gdshader" id="9_ckr1s"]
 [ext_resource type="Texture2D" uid="uid://b0ikph8w7o7yd" path="res://Sprites/PointLight.png" id="10_m2d38"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0htxe"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_ssj53")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_vhfyx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_qw6cp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_j8pke")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_oe28x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_frlyq")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1agb5"]
-shader = ExtResource("8_k6csv")
-shader_parameter/color_1 = Vector4(0, 0, 0, 0)
-shader_parameter/color_2 = Vector4(0, 0, 0.2, 1)
-shader_parameter/color_3 = Vector4(0.4, 0.1, 0.4, 1)
-shader_parameter/color_4 = Vector4(0.6, 0.3, 0.5, 1)
-shader_parameter/color_5 = Vector4(0.8, 0.4, 0.7, 0.765)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4536"]
-shader = ExtResource("9_ckr1s")
-shader_parameter/level1 = Color(0, 0, 0, 1)
-shader_parameter/level2 = Color(0.121569, 0.0745098, 0.0823529, 1)
-shader_parameter/level3 = Color(0.266667, 0.219608, 0.184314, 1)
-shader_parameter/level4 = Color(0.631373, 0.341176, 0.207843, 1)
-shader_parameter/level5 = Color(0.992157, 0.635294, 0.290196, 1)
-shader_parameter/threshold1 = 0.18
-shader_parameter/threshold2 = 0.226
-shader_parameter/threshold3 = 0.429
-shader_parameter/threshold4 = 0.644
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgqv2"]
-radius = 9.0
-height = 18.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyas1"]
 texture = ExtResource("8_eeivk")
@@ -1115,77 +1056,8 @@ sources/0 = SubResource("TileSetAtlasSource_xyas1")
 
 [node name="Test" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(1, 14)
-script = ExtResource("1_tkpwq")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-sprite_frames = SubResource("SpriteFrames_0htxe")
-animation = &"idle"
-autoplay = "idle"
-frame = 5
-frame_progress = 0.593171
-
-[node name="Soundwave" parent="CharacterBody2D" instance=ExtResource("8_21o7i")]
-increasingVelocity = 75.0
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(3, 3)
-
-[node name="Control" type="Control" parent="CharacterBody2D/Camera2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -1.0
-offset_top = -14.0
-offset_right = 39.0
-offset_bottom = 26.0
-
-[node name="ColorRect" type="ColorRect" parent="CharacterBody2D/Camera2D/Control"]
-visible = false
-z_index = 5
-material = SubResource("ShaderMaterial_1agb5")
-layout_mode = 0
-offset_left = -194.0
-offset_top = -96.0
-offset_right = 196.0
-offset_bottom = 125.0
-
-[node name="ColorRect2" type="ColorRect" parent="CharacterBody2D/Camera2D/Control"]
-visible = false
-z_index = 5
-material = SubResource("ShaderMaterial_k4536")
-layout_mode = 0
-offset_left = -194.0
-offset_top = -97.0
-offset_right = 197.0
-offset_bottom = 126.0
-
-[node name="ColorRect3" type="ColorRect" parent="CharacterBody2D/Camera2D/Control"]
-visible = false
-layout_mode = 0
-offset_left = -196.0
-offset_top = -101.0
-offset_right = -114.0
-offset_bottom = -28.0
-scale = Vector2(4.8, 3.12)
-color = Color(0, 0, 0, 0.486275)
-
-[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D/Camera2D/Control"]
-position = Vector2(1, 14)
-energy = 0.62
-range_z_max = 1026
-range_layer_min = -1
-range_layer_max = 3
-shadow_enabled = true
-texture = ExtResource("10_m2d38")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="CharacterBody2D/Camera2D/Control"]
-color = Color(0, 0, 0, 1)
-blend_mode = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 3)
-shape = SubResource("CapsuleShape2D_vgqv2")
+[node name="Character" parent="." instance=ExtResource("1_jy83b")]
+position = Vector2(17, 12)
 
 [node name="TileMap" type="TileMap" parent="." groups=["LightCollision"]]
 position = Vector2(-7, -1)
@@ -1202,3 +1074,23 @@ layer_2/tile_data = PackedInt32Array(720879, 393216, 4, 786415, 393216, 5, 72088
 layer_3/name = "Capa 3"
 layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(-393223, 327680, 28, -327687, 327680, 28, -262151, 327680, 29, -393222, 393216, 28, -327686, 393216, 28, -262150, 393216, 29, -393221, 393216, 28, -327685, 393216, 28, -262149, 393216, 29, -393220, 393216, 28, -327684, 393216, 28, -262148, 393216, 29, -393219, 393216, 28, -327683, 393216, 28, -262147, 393216, 29, -393218, 393216, 28, -327682, 393216, 28, -262146, 393216, 29, -393217, 393216, 28, -327681, 393216, 28, -262145, 393216, 29, -458752, 393216, 28, -393216, 393216, 28, -327680, 393216, 29, -458751, 393216, 28, -393215, 393216, 28, -327679, 393216, 29, -458750, 393216, 28, -393214, 393216, 28, -327678, 393216, 29, -458749, 393216, 28, -393213, 393216, 28, -327677, 393216, 29, -458748, 393216, 28, -393212, 393216, 28, -327676, 393216, 29, -458747, 393216, 28, -393211, 393216, 28, -327675, 458752, 29, -458759, 327680, 28, -458758, 393216, 28, -458757, 393216, 28, -458756, 393216, 28, -458755, 393216, 28, -458754, 393216, 28, -458753, 393216, 28, -524288, 393216, 28, -524287, 393216, 28, -524286, 393216, 28, -524285, 393216, 28, -524284, 393216, 28, -524283, 393216, 28, -524295, 393216, 27, -524294, 393216, 27, -524293, 393216, 27, -524292, 393216, 27, -524291, 393216, 27, -524290, 393216, 27, -524289, 393216, 27, -589824, 393216, 27, -589823, 393216, 27, -589822, 393216, 27, -589821, 393216, 27, -589820, 393216, 27, -589819, 393216, 27, 1048574, 0, 21, 1048575, 65536, 21, 983040, 131072, 21, 983041, 196608, 21, 1048562, 0, 21, 1048563, 65536, 21, 1048564, 131072, 21, 1048565, 196608, 21, 589804, 327680, 20, 655340, 327680, 21, 720876, 327680, 22, 589805, 393216, 20, 655341, 393216, 21, 720877, 393216, 22, 589806, 458752, 20, 655342, 458752, 21, 720878, 458752, 22, 1048567, 327680, 22, 917496, 393216, 20, 917497, 458752, 20, 983033, 458752, 21, 1048569, 458752, 22, 917499, 327680, 20, 983035, 327680, 21, 1048571, 327680, 22, 917500, 393216, 20, 983036, 393216, 21, 1048572, 393216, 22, 983037, 458752, 21, 1048573, 458752, 22, 458752, 327680, 20, 524288, 327680, 21, 589824, 327680, 22, 458753, 393216, 20, 524289, 393216, 21, 589825, 393216, 22, 458754, 327680, 22, 524290, 458752, 21, 589826, 458752, 22, 327682, 327680, 20, 393218, 327680, 21, 327683, 393216, 20, 393219, 393216, 21, 458755, 393216, 22, 327684, 458752, 20, 393220, 458752, 21, 458756, 458752, 22, 720898, 327680, 20, 786434, 327680, 21, 851970, 327680, 22, 720899, 393216, 20, 786435, 393216, 21, 851971, 393216, 22, 720900, 458752, 20, 786436, 458752, 21, 851972, 458752, 22, -131084, 196608, 30, -131083, 262144, 30, -131082, 327680, 30, -131081, 393216, 30, 655357, 393216, 1, 720893, 393216, 2, 786429, 393216, 3, 655358, 458752, 1, 720894, 458752, 2, 786430, 458752, 3, 524271, 393216, 1, 589807, 393216, 2, 655343, 393216, 3, 524272, 458752, 1, 589808, 458752, 2, 655344, 458752, 3, -13, 393216, 1, 65523, 393216, 2, 131059, 393216, 3, -12, 458752, 1, 65524, 458752, 2, 131060, 458752, 3, 917501, 458752, 20, 917495, 327680, 20, 983031, 327680, 21, 983032, 393216, 21, 1048568, 393216, 22, 720880, 327680, 20, 786416, 327680, 21, 851952, 327680, 22, 720881, 393216, 20, 786417, 393216, 21, 851953, 393216, 22, 720882, 458752, 20, 786418, 458752, 21, 851954, 458752, 22, 458741, 0, 25, 524277, 0, 26, 589813, 0, 27, 458742, 65536, 25, 524278, 65536, 26, 589814, 65536, 27, 458743, 131072, 25, 524279, 131072, 26, 589815, 131072, 27, 458744, 0, 25, 524280, 0, 26, 589816, 0, 27, 458745, 65536, 25, 524281, 65536, 26, 589817, 65536, 27, 458746, 131072, 25, 524282, 131072, 26, 589818, 131072, 27)
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights"]
+position = Vector2(-39, 162)
+color = Color(0.996078, 1, 0.85098, 1)
+energy = 0.3
+texture = ExtResource("10_m2d38")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lights"]
+position = Vector2(-262, 132)
+color = Color(0.996078, 1, 0.85098, 1)
+energy = 0.3
+texture = ExtResource("10_m2d38")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lights"]
+position = Vector2(-199, 5)
+color = Color(0.996078, 1, 0.85098, 1)
+energy = 0.3
+texture = ExtResource("10_m2d38")

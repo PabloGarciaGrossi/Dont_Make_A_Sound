@@ -1,16 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://jwv7nte7qcg5"]
+[gd_scene load_steps=5 format=3 uid="uid://jwv7nte7qcg5"]
 
 [ext_resource type="Script" path="res://Scripts/LightScripts/LightCollision.gd" id="1_tv2em"]
 [ext_resource type="PackedScene" uid="uid://fwyxeiriryeu" path="res://Prefabs/PointLight.tscn" id="2_sebl3"]
+[ext_resource type="Texture2D" uid="uid://b0ikph8w7o7yd" path="res://Sprites/PointLight.png" id="3_11uwx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ucu0t"]
 
 [node name="LightCollision" type="Area2D"]
 script = ExtResource("1_tv2em")
 light = ExtResource("2_sebl3")
+initial_size = 1.0
+decreasing_speed = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_ucu0t")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.1
+texture = ExtResource("3_11uwx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

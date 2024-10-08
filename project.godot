@@ -15,6 +15,10 @@ run/main_scene="res://test_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/enable_input=true
+
 [dotnet]
 
 project/assembly_name="Dont_Make_A_Sound"
@@ -57,3 +61,4 @@ Interact={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+limits/opengl/max_lights_per_object=80
