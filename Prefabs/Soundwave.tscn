@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://jwv7nte7qcg5" path="res://Prefabs/LightCollision.tscn" id="2_f31tl"]
 
 [node name="Soundwave" type="Node2D"]
-z_index = 5
 script = ExtResource("1_iulss")
 increasingVelocity = 65.0
 deceleration = 15.0

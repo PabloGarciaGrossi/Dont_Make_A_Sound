@@ -23,8 +23,10 @@ func _on_body_entered(body):
 
 func reset():
 	collided = false
+
 	
 func _process(delta):
+
 	if(collided):
 		if(current_size > 0):
 			current_size -= decreasing_speed * delta
