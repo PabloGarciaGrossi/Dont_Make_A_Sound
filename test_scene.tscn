@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://gfuj0ehnrm48"]
 
 [ext_resource type="PackedScene" uid="uid://duxhk0dlocol1" path="res://Prefabs/character.tscn" id="1_jy83b"]
+[ext_resource type="PackedScene" uid="uid://dvvy8ou4rt3c0" path="res://Prefabs/lightmarker.tscn" id="3_0k8j5"]
 [ext_resource type="Texture2D" uid="uid://dnfa4pii80ls1" path="res://Sprites/Tilesets/City.png" id="8_eeivk"]
-[ext_resource type="Texture2D" uid="uid://b0ikph8w7o7yd" path="res://Sprites/PointLight.png" id="10_m2d38"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xyas1"]
 texture = ExtResource("8_eeivk")
@@ -1221,23 +1221,11 @@ layer_3/tile_data = PackedInt32Array(-393223, 327680, 28, -327687, 327680, 28, -
 
 [node name="Lights" type="Node2D" parent="."]
 
-[node name="PointLight2D" type="PointLight2D" parent="Lights"]
+[node name="Light" parent="Lights" instance=ExtResource("3_0k8j5")]
+position = Vector2(-199, 1)
+
+[node name="Light2" parent="Lights" instance=ExtResource("3_0k8j5")]
+position = Vector2(-264, 128)
+
+[node name="Light3" parent="Lights" instance=ExtResource("3_0k8j5")]
 position = Vector2(-39, 162)
-color = Color(0.996078, 1, 0.85098, 1)
-energy = 1.3
-texture = ExtResource("10_m2d38")
-texture_scale = 1.75
-
-[node name="PointLight2D2" type="PointLight2D" parent="Lights"]
-position = Vector2(-262, 132)
-color = Color(0.996078, 1, 0.85098, 1)
-energy = 1.3
-texture = ExtResource("10_m2d38")
-texture_scale = 1.75
-
-[node name="PointLight2D3" type="PointLight2D" parent="Lights"]
-position = Vector2(-199, 5)
-color = Color(0.996078, 1, 0.85098, 1)
-energy = 1.3
-texture = ExtResource("10_m2d38")
-texture_scale = 1.75

@@ -1,0 +1,62 @@
+shader_type canvas_item;
+
+uniform sampler2D screen_texture : hint_screen_texture, filter_nearest;
+uniform vec2 lights[100];
+uniform float lightsMarkerRadius[100];
+uniform int number_of_lights = 1;
+uniform vec4 modulate_color : source_color = vec4(0.0);
+
+
+uniform float band_strength = 0.8;
+uniform float band_radius = 54.0f;
+
+uniform float max_light_radius = 128.0f;
+
+float[2] distance_to_light(vec2 coords) {
+	float dist = 1000.0;
+	float light_radius = 0.0f;
+	for (int i = 0; i < number_of_lights; i++) {
+		float new_dist = distance(coords, lights[i]);
+		
+		if(new_dist < dist){
+			dist = new_dist;
+			light_radius = lightsMarkerRadius[i];
+		}
+	}
+	float returned [2];
+	returned[0] = dist;
+	returned[1] = light_radius; 
+	return returned;
+}
+
+vec4 modulate(vec4 color, float[2] distance_to_light){
+	vec4 moduled = color * modulate_color;
+	
+	if(distance_to_light[0] > distance_to_light[1] * max_light_radius)
+	{
+		return moduled;
+	}
+	
+	if(distance_to_light[0] >= distance_to_light[1] * band_radius)
+	{
+		return mix(moduled, color, band_strength);
+	}
+	
+	return color;
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	COLOR = texture(screen_texture, SCREEN_UV);
+
+	COLOR = modulate(COLOR, distance_to_light(FRAGCOORD.xy));
+}
+
+
+
+
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}

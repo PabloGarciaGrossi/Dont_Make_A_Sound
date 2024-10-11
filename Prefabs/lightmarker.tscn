@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvvy8ou4rt3c0"]
+
+[ext_resource type="Script" path="res://Scripts/LightScripts/LightMarker.gd" id="1_ew0ms"]
+
+[node name="Light" type="Marker2D" groups=["light"]]
+script = ExtResource("1_ew0ms")
+radius = 1.0

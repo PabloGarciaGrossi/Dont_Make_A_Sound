@@ -4,6 +4,8 @@ extends Area2D
 
 @export var initial_size : float
 @export var decreasing_speed : float
+
+@export var lightMarker : LightMarker
 var current_size : float
 
 var collided = false
@@ -30,7 +32,8 @@ func _process(delta):
 	if(collided):
 		if(current_size > 0):
 			current_size -= decreasing_speed * delta
-			scale = Vector2(current_size, current_size)
+			#scale = Vector2(current_size, current_size)
+			lightMarker.assign_radius(current_size)
 		else:
 			queue_free()
 		pass
