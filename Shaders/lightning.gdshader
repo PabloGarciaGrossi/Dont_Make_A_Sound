@@ -15,6 +15,7 @@ uniform float max_light_radius = 128.0f;
 float[2] distance_to_light(vec2 coords) {
 	float dist = 1000.0;
 	float light_radius = 0.0f;
+	
 	for (int i = 0; i < number_of_lights; i++) {
 		float new_dist = distance(coords, lights[i]);
 		
@@ -29,27 +30,50 @@ float[2] distance_to_light(vec2 coords) {
 	return returned;
 }
 
-vec4 modulate(vec4 color, float[2] distance_to_light){
+vec4 modulate(vec4 color, float[2] distance_and_radius_of_light){
 	vec4 moduled = color * modulate_color;
-	
-	if(distance_to_light[0] > distance_to_light[1] * max_light_radius)
+
+	if(distance_and_radius_of_light[0] > distance_and_radius_of_light[1] * max_light_radius)
 	{
 		return moduled;
 	}
 	
-	if(distance_to_light[0] >= distance_to_light[1] * band_radius)
+	if(distance_and_radius_of_light[0] >= distance_and_radius_of_light[1] * band_radius)
 	{
 		return mix(moduled, color, band_strength);
 	}
 	
+
 	return color;
 }
 
+vec4 myColorFunc(vec4 color, vec2 coords)
+{
+	vec4 moduled = color * modulate_color;
+	
+	for (int i = 0; i < number_of_lights; i++) {
+		float new_dist = distance(coords, lights[i]);
+		
+		if(new_dist < max_light_radius * lightsMarkerRadius[i] && new_dist > band_radius * lightsMarkerRadius[i]){
+			moduled = mix(moduled, color, band_strength);
+		}
+		else if(new_dist < band_radius * lightsMarkerRadius[i]){
+			moduled = mix(moduled, color, max_light_radius * lightsMarkerRadius[i] / new_dist);
+			moduled = clamp(moduled, vec4(0.0), color);
+		}
+		
+
+	}
+	
+	return moduled;
+}
 void fragment() {
 	// Called for every pixel the material is visible on.
 	COLOR = texture(screen_texture, SCREEN_UV);
 
-	COLOR = modulate(COLOR, distance_to_light(FRAGCOORD.xy));
+	vec4 color = myColorFunc(COLOR, FRAGCOORD.xy);
+	COLOR = color;
+	
 }
 
 

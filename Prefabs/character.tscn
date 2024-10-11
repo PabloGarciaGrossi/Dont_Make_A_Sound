@@ -320,3 +320,4 @@ position = Vector2(0, 11)
 shape = SubResource("CapsuleShape2D_vgqv2")
 
 [node name="Light" parent="." instance=ExtResource("10_rn07v")]
+radius = 0.7
