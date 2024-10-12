@@ -1,4 +1,5 @@
-extends CharacterBody2D
+extends Sound_Emitter
+class_name Player
 
 @export var SPEED = 100.0
 @export var ACCEL = 10.0
@@ -66,5 +67,6 @@ func _process(delta):
 		wave = soundwave.instantiate()
 		get_parent().add_child(wave)
 		wave.set_values(position)
+		emit_signal("Sound_Emission", self, false)
 		current_voice_cd = 0
 	pass

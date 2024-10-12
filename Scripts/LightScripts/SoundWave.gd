@@ -31,7 +31,7 @@ func set_values(pos : Vector2):
 	antialised = true
 	start_angle = 0
 	end_angle = 360
-	point_count = 46
+	point_count = 36
 	
 	color = Color.WHITE
 	width = 1

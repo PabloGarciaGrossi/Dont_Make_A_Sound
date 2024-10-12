@@ -21,7 +21,6 @@ func _on_body_entered(body):
 		#newLight.position = position
 		collided = true
 		current_size = initial_size
-		print("Collided with: ", body.name)
 
 func reset():
 	collided = false
