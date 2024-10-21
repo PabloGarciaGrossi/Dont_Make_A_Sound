@@ -27,7 +27,6 @@ func reset():
 
 	
 func _process(delta):
-
 	if(collided):
 		if(current_size > 0):
 			current_size -= decreasing_speed * delta

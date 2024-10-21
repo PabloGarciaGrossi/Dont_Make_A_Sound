@@ -65,8 +65,9 @@ func _process(delta):
 		#radius = 0
 		#current_increasingVelocity = increasingVelocity
 		for i in range(listOfCollisions.size()):
-			if(listOfCollisions[i] != null):
+			if(listOfCollisions[i] != null and listOfCollisions[i].lightMarker.radius > 0):
 				listOfCollisions[i].collided = true
+				listOfCollisions[i].current_size = listOfCollisions[i].initial_size
 		queue_free()
 	queue_redraw()
 	

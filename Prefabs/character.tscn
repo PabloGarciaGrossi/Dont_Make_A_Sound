@@ -1,14 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://duxhk0dlocol1"]
+[gd_scene load_steps=36 format=3 uid="uid://duxhk0dlocol1"]
 
 [ext_resource type="Script" path="res://Scripts/Character/CharacterMovement.gd" id="1_p1itj"]
 [ext_resource type="Texture2D" uid="uid://vu5s446nksw5" path="res://Sprites/Protagonista/Idle.png" id="3_tn2g1"]
 [ext_resource type="Texture2D" uid="uid://ctdl83lcaqqrv" path="res://Sprites/Protagonista/Walk.png" id="4_e1lg2"]
 [ext_resource type="Texture2D" uid="uid://bnax50kdfnicb" path="res://Sprites/Protagonista/Shadow.png" id="5_haxt3"]
-[ext_resource type="Shader" path="res://Shaders/lightning.gdshader" id="8_4ymq0"]
 [ext_resource type="PackedScene" uid="uid://hhrxo17dn25k" path="res://Prefabs/Soundwave.tscn" id="8_pyslb"]
-[ext_resource type="Shader" path="res://Shaders/ColorQuantization.gdshader" id="9_3gtf6"]
-[ext_resource type="Script" path="res://Scripts/LightScripts/Lightning.gd" id="9_l0am5"]
-[ext_resource type="Shader" path="res://Shaders/4LevelPosterization.gdshader" id="10_51fvp"]
 [ext_resource type="PackedScene" uid="uid://dvvy8ou4rt3c0" path="res://Prefabs/lightmarker.tscn" id="10_rn07v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cefgy"]
@@ -208,36 +204,6 @@ animations = [{
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_knten"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1agb5"]
-shader = ExtResource("9_3gtf6")
-shader_parameter/color_1 = Vector4(0, 0, 0, 0)
-shader_parameter/color_2 = Vector4(0, 0, 0.2, 1)
-shader_parameter/color_3 = Vector4(0.4, 0.1, 0.4, 1)
-shader_parameter/color_4 = Vector4(0.6, 0.3, 0.5, 1)
-shader_parameter/color_5 = Vector4(0.8, 0.4, 0.7, 0.765)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k4536"]
-shader = ExtResource("10_51fvp")
-shader_parameter/level1 = Color(0, 0, 0, 1)
-shader_parameter/level2 = Color(0.121569, 0.0745098, 0.0823529, 1)
-shader_parameter/level3 = Color(0.266667, 0.219608, 0.184314, 1)
-shader_parameter/level4 = Color(0.631373, 0.341176, 0.207843, 1)
-shader_parameter/level5 = Color(0.992157, 0.635294, 0.290196, 1)
-shader_parameter/threshold1 = 0.18
-shader_parameter/threshold2 = 0.226
-shader_parameter/threshold3 = 0.429
-shader_parameter/threshold4 = 0.644
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_se6ex"]
-shader = ExtResource("8_4ymq0")
-shader_parameter/lights = null
-shader_parameter/lightsMarkerRadius = null
-shader_parameter/number_of_lights = 1
-shader_parameter/modulate_color = Color(0, 0, 0, 1)
-shader_parameter/band_strength = 0.3
-shader_parameter/band_radius = 100.0
-shader_parameter/max_light_radius = 128.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgqv2"]
 radius = 11.0
 height = 34.0
@@ -245,6 +211,9 @@ height = 34.0
 [node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "streamPlayer") groups=["Player"]]
 position = Vector2(1, 14)
 script = ExtResource("1_p1itj")
+SPEED = 75.0
+FORCE_COLLISION = 100.0
+life = 50.0
 soundwave = ExtResource("8_pyslb")
 animated_sprite = NodePath("AnimatedSprite2D")
 streamPlayer = NodePath("mic_input")
@@ -267,56 +236,9 @@ bus = &"Microphone"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
-[node name="Control" type="Control" parent="Camera2D"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -1.0
-offset_top = -14.0
-offset_right = 39.0
-offset_bottom = 26.0
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D/Control"]
-visible = false
-z_index = 5
-material = SubResource("ShaderMaterial_1agb5")
-layout_mode = 0
-offset_left = -194.0
-offset_top = -96.0
-offset_right = 196.0
-offset_bottom = 125.0
-
-[node name="ColorRect2" type="ColorRect" parent="Camera2D/Control"]
-visible = false
-z_index = 5
-material = SubResource("ShaderMaterial_k4536")
-layout_mode = 0
-offset_left = -194.0
-offset_top = -97.0
-offset_right = 197.0
-offset_bottom = 126.0
-
-[node name="ColorRect3" type="ColorRect" parent="Camera2D/Control"]
-visible = false
-layout_mode = 0
-offset_left = -196.0
-offset_top = -101.0
-offset_right = -114.0
-offset_bottom = -28.0
-scale = Vector2(4.8, 3.12)
-color = Color(0, 0, 0, 0.486275)
-
-[node name="Lightning" type="ColorRect" parent="Camera2D/Control"]
-z_index = 5
-material = SubResource("ShaderMaterial_se6ex")
-layout_mode = 0
-offset_left = -193.0
-offset_top = -96.0
-offset_right = 194.0
-offset_bottom = 124.0
-script = ExtResource("9_l0am5")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
 shape = SubResource("CapsuleShape2D_vgqv2")
 
 [node name="Light" parent="." instance=ExtResource("10_rn07v")]
+varySize = true

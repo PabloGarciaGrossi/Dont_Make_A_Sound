@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bltrgyvmt0bwu"]
+
+[ext_resource type="Texture2D" uid="uid://dd1rpe6heepey" path="res://UI/SpritesUI/BarBG.png" id="1_p5toi"]
+[ext_resource type="Texture2D" uid="uid://b0y4enwundj6r" path="res://UI/SpritesUI/FillBar.png" id="2_31nqk"]
+[ext_resource type="Script" path="res://Scripts/UI/Life_Bar.gd" id="3_wv0bx"]
+
+[node name="LifeBar" type="HBoxContainer"]
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(2, 2)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+z_index = 6
+layout_mode = 2
+max_value = 50.0
+value = 50.0
+texture_under = ExtResource("1_p5toi")
+texture_progress = ExtResource("2_31nqk")
+script = ExtResource("3_wv0bx")

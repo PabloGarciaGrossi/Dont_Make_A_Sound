@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2rrca7phl6si"]
+
+[ext_resource type="Shader" path="res://Shaders/lightning.gdshader" id="1_vkue0"]
+[ext_resource type="Script" path="res://Scripts/LightScripts/Lightning.gd" id="2_2leek"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_se6ex"]
+shader = ExtResource("1_vkue0")
+shader_parameter/lights = null
+shader_parameter/lightsMarkerRadius = null
+shader_parameter/number_of_lights = 1
+shader_parameter/modulate_color = Color(0, 0, 0, 1)
+shader_parameter/band_strength = 0.3
+shader_parameter/band_radius = 100.0
+shader_parameter/max_light_radius = 128.0
+
+[node name="Lightning" type="ColorRect"]
+z_index = 5
+material = SubResource("ShaderMaterial_se6ex")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_2leek")
