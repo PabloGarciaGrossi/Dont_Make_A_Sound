@@ -15,18 +15,20 @@ uniform float max_light_radius = 128.0f;
 float[2] distance_to_light(vec2 coords) {
 	float dist = 1000.0;
 	float light_radius = 0.0f;
-	
+	vec2 light_pos = vec2(0,0);
 	for (int i = 0; i < number_of_lights; i++) {
 		float new_dist = distance(coords, lights[i]);
 		
 		if(new_dist < dist){
 			dist = new_dist;
 			light_radius = lightsMarkerRadius[i];
+			light_pos = lights[i];
 		}
 	}
 	float returned [2];
 	returned[0] = dist;
 	returned[1] = light_radius; 
+	
 	return returned;
 }
 

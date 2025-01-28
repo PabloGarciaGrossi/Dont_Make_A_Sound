@@ -44,6 +44,10 @@ func set_values(pos : Vector2):
 		listOfCollisions.append(newCollision)
 		newCollision.position = Vector2(center.x + radius * cos((angle * i)), 
 										center.y + radius * sin((angle * i)))
+		if i > 0:
+			newCollision.setNextLightPosition(listOfCollisions[(i-1)])
+		
+	listOfCollisions[0].setNextLightPosition(listOfCollisions[point_count -1])
 
 #func _draw():
 	#for i in range(listOfCollisions.size() - 1):
@@ -51,7 +55,8 @@ func set_values(pos : Vector2):
 			#draw_line(listOfCollisions[i].position, listOfCollisions[i+1].position, color, width)
 	
 	#draw_arc(center, radius, start_angle, end_angle, point_count, color, width, antialised)
-	
+
+
 func _process(delta):
 	if(current_increasingVelocity > 0):
 		current_increasingVelocity -= deceleration * delta

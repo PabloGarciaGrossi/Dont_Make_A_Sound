@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://eabadc83k8vd"]
+[gd_scene load_steps=6 format=3 uid="uid://eabadc83k8vd"]
 
+[ext_resource type="Script" path="res://Scripts/UI/UI_Manager.gd" id="1_3y778"]
 [ext_resource type="PackedScene" uid="uid://d2rrca7phl6si" path="res://UI/lightning.tscn" id="1_6bydw"]
 [ext_resource type="PackedScene" uid="uid://bltrgyvmt0bwu" path="res://UI/life_bar.tscn" id="2_px126"]
+[ext_resource type="PackedScene" uid="uid://cwug3tulwrk02" path="res://UI/pause_menu.tscn" id="4_15klk"]
+[ext_resource type="Script" path="res://Scripts/UI/Camera_Follow.gd" id="5_eqodw"]
 
-[node name="Interface" type="Control"]
+[node name="Interface" type="Control" node_paths=PackedStringArray("pause_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3y778")
+pause_menu = NodePath("PauseMenu")
 
 [node name="LifeBar" parent="." instance=ExtResource("2_px126")]
 layout_mode = 0
@@ -29,3 +34,10 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_15klk")]
+layout_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+script = ExtResource("5_eqodw")

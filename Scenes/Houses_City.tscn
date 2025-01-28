@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7vns30r0gmbp"]
+
+[ext_resource type="PackedScene" uid="uid://duxhk0dlocol1" path="res://Prefabs/character.tscn" id="1_ehonm"]
+[ext_resource type="Script" path="res://Scripts/Managers/LevelManager.gd" id="1_etsp5"]
+[ext_resource type="PackedScene" uid="uid://dyi6aarsowox6" path="res://Maps/casas_ciudad_1.tscn" id="1_gy8sn"]
+[ext_resource type="PackedScene" uid="uid://dvvy8ou4rt3c0" path="res://Prefabs/lightmarker.tscn" id="3_y1msh"]
+[ext_resource type="PackedScene" uid="uid://cjgow5cn38qah" path="res://UI/canvas_layer.tscn" id="4_at6tj"]
+[ext_resource type="PackedScene" uid="uid://b8clso0vkhhuq" path="res://Prefabs/map_connection.tscn" id="5_s5ds3"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dkvtd"]
+vertices = PackedVector2Array(1450, 1066, 1816, 1250, -824, 1216, -538, 1066, -775, -356, -538, -218, 1753, -350, 1450, -218, 685, 528, 699, 502, 742, 474, 826, 474, 886, 566, 774, 566, 690, 548, 886, 266, 842, 442, 842, 390, 634, 266, 726, 390, 698, 358, 726, 442, 742, 442, 642, 550, 646, 550, 646, 554, 634, 566, 826, 442, 774, 582, 746, 582, 746, 566, 682, 554, 682, 549, 634, 358, 698, 426, 638, 502, 634, 426, 634, 517, 642, 521, -2, 512, 11, 486, 54, 458, 138, 458, 198, 550, 86, 550, 2, 532, 198, 266, 154, 426, 154, 374, -54, 266, 38, 374, 10, 342, 38, 426, 54, 426, -46, 534, -42, 534, -42, 538, -54, 550, 138, 426, 86, 566, 58, 566, 58, 550, -6, 538, -6, 533, -54, 342, 10, 410, -50, 486, -54, 410, -54, 501, -46, 505)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(6, 1, 0, 7), PackedInt32Array(8, 9, 10, 11, 12, 13, 14), PackedInt32Array(15, 12, 16, 17), PackedInt32Array(18, 15, 17, 19, 20), PackedInt32Array(21, 22, 10, 9), PackedInt32Array(23, 24, 25, 26), PackedInt32Array(11, 27, 16, 12), PackedInt32Array(13, 28, 29, 30), PackedInt32Array(14, 13, 30, 31, 32), PackedInt32Array(20, 33, 18), PackedInt32Array(34, 20, 19, 21, 9), PackedInt32Array(34, 9, 35, 36), PackedInt32Array(37, 38, 23, 26), PackedInt32Array(31, 30, 26, 25), PackedInt32Array(36, 35, 37), PackedInt32Array(36, 37, 26), PackedInt32Array(39, 40, 41, 42, 43, 44, 45), PackedInt32Array(46, 43, 47, 48), PackedInt32Array(49, 46, 48, 50, 51), PackedInt32Array(52, 53, 41, 40), PackedInt32Array(54, 55, 56, 57), PackedInt32Array(42, 58, 47, 43), PackedInt32Array(44, 59, 60, 61), PackedInt32Array(45, 44, 61, 62, 63), PackedInt32Array(51, 64, 49), PackedInt32Array(65, 51, 50, 52, 40), PackedInt32Array(65, 40, 66, 67), PackedInt32Array(68, 69, 54, 57), PackedInt32Array(62, 61, 57, 56), PackedInt32Array(67, 66, 68), PackedInt32Array(67, 68, 57)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-785, -367, -835, 1226, 1827, 1261, 1763, -360)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="HousesCity" type="Node2D" node_paths=PackedStringArray("player", "connections")]
+script = ExtResource("1_etsp5")
+player = NodePath("Character")
+connections = [NodePath("City_Houses_1")]
+
+[node name="Character" parent="." instance=ExtResource("1_ehonm")]
+position = Vector2(33, 509)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_dkvtd")
+
+[node name="Casas_ciudad_1" parent="NavigationRegion2D" groups=["LightCollision"] instance=ExtResource("1_gy8sn")]
+layer_0/z_index = -1
+layer_1/z_index = -3
+layer_3/z_index = 1
+
+[node name="Light" parent="." instance=ExtResource("3_y1msh")]
+position = Vector2(89, 410)
+varySize = true
+
+[node name="Light2" parent="." instance=ExtResource("3_y1msh")]
+position = Vector2(778, 422)
+varySize = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_at6tj")]
+
+[node name="City_Houses_1" parent="." instance=ExtResource("5_s5ds3")]
+position = Vector2(73, 574)
+scale = Vector2(2, 1)
+push_distance = 50
+path_to_new_scene = "res://Scenes/City.tscn"
+entrance_name = "City_Door_House_1"

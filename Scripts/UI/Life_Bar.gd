@@ -17,3 +17,7 @@ func _process(delta):
 func _on_enemy_character_damage(dmg, position):
 	current_value -= dmg
 	pass # Replace with function body.
+
+
+func _on_enemy_2_character_damage(dmg, position):
+	pass # Replace with function body.

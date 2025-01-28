@@ -1,5 +1,5 @@
 extends Area2D
-
+class_name LightCollision
 @export var light : PackedScene
 
 @export var initial_size : float
@@ -9,6 +9,9 @@ extends Area2D
 var current_size : float
 
 var collided = false
+
+var nextCollision : LightCollision
+
 func setPos(x : float, y: float):
 	position = Vector2(x,y)
 
@@ -35,3 +38,10 @@ func _process(delta):
 		else:
 			queue_free()
 		pass
+
+func _draw():
+	if(nextCollision != null):
+		draw_line(position, nextCollision.position - position, Color.WHITE)
+		
+func setNextLightPosition(light):
+	nextCollision = light

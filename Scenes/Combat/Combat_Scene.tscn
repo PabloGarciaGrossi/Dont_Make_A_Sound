@@ -1,0 +1,526 @@
+[gd_scene load_steps=29 format=3 uid="uid://dtp5rq64q258l"]
+
+[ext_resource type="Texture2D" uid="uid://csl0buhp1hl13" path="res://Sprites/Backgrounds/BaseBackground.png" id="1_07i5l"]
+[ext_resource type="Shader" path="res://Shaders/Battle/Background.gdshader" id="1_xuiti"]
+[ext_resource type="Texture2D" uid="uid://1xgwx5ijjxg3" path="res://Sprites/Protagonista/Atlas/Idle-Sprites1.png" id="5_2f57e"]
+[ext_resource type="Texture2D" uid="uid://drkryw2eerskh" path="res://Sprites/Monster/Monster2Idle1.png" id="5_i3r2l"]
+[ext_resource type="Texture2D" uid="uid://cq1oc0lxtfdua" path="res://Sprites/Monster/Monster2Idle2.png" id="5_pukyr"]
+[ext_resource type="Texture2D" uid="uid://dd1rpe6heepey" path="res://UI/SpritesUI/BarBG.png" id="5_w75uf"]
+[ext_resource type="Texture2D" uid="uid://b0y4enwundj6r" path="res://UI/SpritesUI/FillBar.png" id="6_04xb1"]
+[ext_resource type="Texture2D" uid="uid://qgbqj0olx6b1" path="res://Sprites/Monster/Monster2Idle3.png" id="6_gp7p2"]
+[ext_resource type="Texture2D" uid="uid://c82xlce2panxn" path="res://Sprites/Protagonista/Atlas/Idle-Sprites2.png" id="6_hgqj3"]
+[ext_resource type="Script" path="res://Scripts/UI/Life_Bar.gd" id="7_2dcnh"]
+[ext_resource type="Texture2D" uid="uid://ilsx3888sl4m" path="res://Sprites/Protagonista/Atlas/Idle-Sprites3.png" id="7_d74yg"]
+[ext_resource type="Texture2D" uid="uid://dklga624nont6" path="res://Sprites/Monster/Monster2Idle4.png" id="7_p6gu4"]
+[ext_resource type="Texture2D" uid="uid://b8sytdcqn4dfx" path="res://Sprites/Monster/Monster2Idle5.png" id="8_jdub3"]
+[ext_resource type="Texture2D" uid="uid://b031wyd7yfkn0" path="res://Sprites/Protagonista/Atlas/Idle-Sprites4.png" id="8_rt40s"]
+[ext_resource type="Texture2D" uid="uid://dx83smw4lrlq" path="res://Sprites/Protagonista/Atlas/Idle-Sprites5.png" id="9_ihhl8"]
+[ext_resource type="Texture2D" uid="uid://dk7bo7ylloju" path="res://Sprites/Monster/Monster2Idle6.png" id="9_typib"]
+[ext_resource type="Texture2D" uid="uid://bvvee03tdr3vu" path="res://Sprites/Monster/Monster2Idle7.png" id="10_2bg2p"]
+[ext_resource type="Texture2D" uid="uid://d0sa8tihwt6an" path="res://Sprites/Protagonista/Atlas/Idle-Sprites6.png" id="10_pw1kq"]
+[ext_resource type="Texture2D" uid="uid://cu1akry6u1qyk" path="res://Sprites/Protagonista/Atlas/Idle-Sprites7.png" id="11_8livk"]
+[ext_resource type="Texture2D" uid="uid://p160ef1nmssc" path="res://Sprites/Monster/Monster2Idle8.png" id="11_bi2ro"]
+[ext_resource type="Texture2D" uid="uid://pmfpe1bymba3" path="res://Sprites/Protagonista/Atlas/Idle-Sprites8.png" id="12_s8hmu"]
+[ext_resource type="Texture2D" uid="uid://cosg1yb2ykt4t" path="res://UI/SpritesUI/FillBarStamina.png" id="22_fl3t8"]
+
+[sub_resource type="Gradient" id="Gradient_gwmve"]
+offsets = PackedFloat32Array(0, 0.544776, 0.985075)
+colors = PackedColorArray(0.670588, 0.654902, 0.231373, 1, 0.767894, 0.44825, 0.247401, 1, 0.670588, 0.654902, 0.231373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ks3wl"]
+gradient = SubResource("Gradient_gwmve")
+width = 1152
+height = 658
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8xy2"]
+shader = ExtResource("1_xuiti")
+shader_parameter/screen_height = 658.0
+shader_parameter/speed = 1.0
+shader_parameter/frequency = 13.45
+shader_parameter/amplitude = 0.075
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 1.0
+shader_parameter/speed_vertical = 0.0
+shader_parameter/scroll_direction = Vector2(0, 0.63)
+shader_parameter/scrolling_speed = 0.355
+shader_parameter/enable_palette_cycling = true
+shader_parameter/enable_scan_lines = false
+shader_parameter/palette_speed = 0.1
+shader_parameter/palette = SubResource("GradientTexture2D_ks3wl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sni32"]
+shader = ExtResource("1_xuiti")
+shader_parameter/screen_height = 20.0
+shader_parameter/speed = 10.0
+shader_parameter/frequency = 100.0
+shader_parameter/amplitude = 0.002
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 0.0
+shader_parameter/speed_vertical = 0.1
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scrolling_speed = 0.08
+shader_parameter/enable_palette_cycling = false
+shader_parameter/enable_scan_lines = false
+shader_parameter/palette_speed = 0.1
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_3cw8c"]
+frames = 8
+speed_scale = 5.0
+frame_0/texture = ExtResource("5_i3r2l")
+frame_1/texture = ExtResource("5_pukyr")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("6_gp7p2")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("7_p6gu4")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("8_jdub3")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("9_typib")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("10_2bg2p")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("11_bi2ro")
+frame_7/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_2cvry"]
+frames = 8
+speed_scale = 2.0
+frame_0/texture = ExtResource("5_2f57e")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("6_hgqj3")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("7_d74yg")
+frame_2/duration = 0.2
+frame_3/texture = ExtResource("8_rt40s")
+frame_3/duration = 0.2
+frame_4/texture = ExtResource("9_ihhl8")
+frame_4/duration = 0.2
+frame_5/texture = ExtResource("10_pw1kq")
+frame_5/duration = 0.2
+frame_6/texture = ExtResource("11_8livk")
+frame_6/duration = 0.2
+frame_7/texture = ExtResource("12_s8hmu")
+frame_7/duration = 0.2
+
+[node name="CombatScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_t8xy2")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 658.0
+texture = ExtResource("1_07i5l")
+
+[node name="BattleButtons" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 658.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/BattleButtons"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 365.0
+offset_right = 203.0
+offset_bottom = 449.0
+
+[node name="ButtonAttack" type="Button" parent="CanvasLayer/Control/BattleButtons/VBoxContainer"]
+layout_mode = 2
+text = "
+"
+icon = ExtResource("5_w75uf")
+icon_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/BattleButtons/VBoxContainer/ButtonAttack"]
+material = SubResource("ShaderMaterial_sni32")
+clip_contents = false
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 0
+offset_left = 84.0
+offset_top = 7.0
+offset_right = 104.0
+offset_bottom = 30.0
+text = "Attack"
+fit_content = true
+autowrap_mode = 2
+
+[node name="ButtonItems" type="Button" parent="CanvasLayer/Control/BattleButtons/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_w75uf")
+icon_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/BattleButtons/VBoxContainer/ButtonItems"]
+material = SubResource("ShaderMaterial_sni32")
+clip_contents = false
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 0
+offset_left = 84.0
+offset_top = 7.0
+offset_right = 104.0
+offset_bottom = 30.0
+text = "Items
+"
+fit_content = true
+autowrap_mode = 2
+
+[node name="ButtonScape" type="Button" parent="CanvasLayer/Control/BattleButtons/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("5_w75uf")
+icon_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/BattleButtons/VBoxContainer/ButtonScape"]
+material = SubResource("ShaderMaterial_sni32")
+clip_contents = false
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 0
+offset_left = 84.0
+offset_top = 7.0
+offset_right = 104.0
+offset_bottom = 30.0
+text = "Flee
+"
+fit_content = true
+autowrap_mode = 2
+
+[node name="Enemies" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Enemies"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 328.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Enemies/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Enemies/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="EnemyBattle" type="TextureRect" parent="CanvasLayer/Enemies/MarginContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_3cw8c")
+expand_mode = 3
+
+[node name="EnemyBattle2" type="TextureRect" parent="CanvasLayer/Enemies/MarginContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_3cw8c")
+expand_mode = 3
+
+[node name="Players" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Players"]
+layout_mode = 0
+offset_top = 402.0
+offset_right = 1152.0
+offset_bottom = 658.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Players/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(210, 210)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+
+[node name="PlayerBattle" type="TextureRect" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_2cvry")
+expand_mode = 3
+
+[node name="CharacterStatus" type="Control" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle/CharacterStatus"]
+layout_mode = 0
+offset_left = -102.326
+offset_right = 89.6744
+offset_bottom = 87.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle/CharacterStatus/MarginContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="CharacterStats" type="VBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle/CharacterStatus/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="LifeBar" type="HBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle/CharacterStatus/MarginContainer/GridContainer/CharacterStats"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle/CharacterStatus/MarginContainer/GridContainer/CharacterStats/LifeBar"]
+z_index = 6
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+texture_under = ExtResource("5_w75uf")
+texture_progress = ExtResource("6_04xb1")
+script = ExtResource("7_2dcnh")
+
+[node name="Label" type="Label" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle/CharacterStatus/MarginContainer/GridContainer/CharacterStats/LifeBar/TextureProgressBar"]
+layout_mode = 2
+offset_left = 44.4443
+offset_top = 5.16796
+offset_right = 87.4443
+offset_bottom = 28.168
+text = "20/20"
+
+[node name="StaminaBar" type="HBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle/CharacterStatus/MarginContainer/GridContainer/CharacterStats"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle/CharacterStatus/MarginContainer/GridContainer/CharacterStats/StaminaBar"]
+z_index = 6
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+texture_under = ExtResource("5_w75uf")
+texture_progress = ExtResource("22_fl3t8")
+script = ExtResource("7_2dcnh")
+
+[node name="Label" type="Label" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle/CharacterStatus/MarginContainer/GridContainer/CharacterStats/StaminaBar/TextureProgressBar"]
+layout_mode = 0
+offset_left = 44.4443
+offset_top = 4.31006
+offset_right = 87.4443
+offset_bottom = 27.3101
+text = "20/20"
+
+[node name="PlayerBattle2" type="TextureRect" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_2cvry")
+expand_mode = 3
+
+[node name="CharacterStatus" type="Control" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle2/CharacterStatus"]
+layout_mode = 0
+offset_left = -102.326
+offset_right = 89.6744
+offset_bottom = 87.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle2/CharacterStatus/MarginContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="CharacterStats" type="VBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle2/CharacterStatus/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="LifeBar" type="HBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle2/CharacterStatus/MarginContainer/GridContainer/CharacterStats"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle2/CharacterStatus/MarginContainer/GridContainer/CharacterStats/LifeBar"]
+z_index = 6
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+texture_under = ExtResource("5_w75uf")
+texture_progress = ExtResource("6_04xb1")
+script = ExtResource("7_2dcnh")
+
+[node name="Label" type="Label" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle2/CharacterStatus/MarginContainer/GridContainer/CharacterStats/LifeBar/TextureProgressBar"]
+layout_mode = 2
+offset_left = 44.4443
+offset_top = 5.16796
+offset_right = 87.4443
+offset_bottom = 28.168
+text = "20/20"
+
+[node name="StaminaBar" type="HBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle2/CharacterStatus/MarginContainer/GridContainer/CharacterStats"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle2/CharacterStatus/MarginContainer/GridContainer/CharacterStats/StaminaBar"]
+z_index = 6
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+texture_under = ExtResource("5_w75uf")
+texture_progress = ExtResource("22_fl3t8")
+script = ExtResource("7_2dcnh")
+
+[node name="Label" type="Label" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle2/CharacterStatus/MarginContainer/GridContainer/CharacterStats/StaminaBar/TextureProgressBar"]
+layout_mode = 0
+offset_left = 44.4443
+offset_top = 4.31006
+offset_right = 87.4443
+offset_bottom = 27.3101
+text = "20/20"
+
+[node name="PlayerBattle3" type="TextureRect" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_2cvry")
+expand_mode = 3
+
+[node name="CharacterStatus" type="Control" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle3/CharacterStatus"]
+layout_mode = 0
+offset_left = -102.326
+offset_right = 89.6744
+offset_bottom = 87.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle3/CharacterStatus/MarginContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="CharacterStats" type="VBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle3/CharacterStatus/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="LifeBar" type="HBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle3/CharacterStatus/MarginContainer/GridContainer/CharacterStats"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle3/CharacterStatus/MarginContainer/GridContainer/CharacterStats/LifeBar"]
+z_index = 6
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+texture_under = ExtResource("5_w75uf")
+texture_progress = ExtResource("6_04xb1")
+script = ExtResource("7_2dcnh")
+
+[node name="Label" type="Label" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle3/CharacterStatus/MarginContainer/GridContainer/CharacterStats/LifeBar/TextureProgressBar"]
+layout_mode = 2
+offset_left = 44.4443
+offset_top = 5.16796
+offset_right = 87.4443
+offset_bottom = 28.168
+text = "20/20"
+
+[node name="StaminaBar" type="HBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle3/CharacterStatus/MarginContainer/GridContainer/CharacterStats"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle3/CharacterStatus/MarginContainer/GridContainer/CharacterStats/StaminaBar"]
+z_index = 6
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+texture_under = ExtResource("5_w75uf")
+texture_progress = ExtResource("22_fl3t8")
+script = ExtResource("7_2dcnh")
+
+[node name="Label" type="Label" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle3/CharacterStatus/MarginContainer/GridContainer/CharacterStats/StaminaBar/TextureProgressBar"]
+layout_mode = 0
+offset_left = 44.4443
+offset_top = 4.31006
+offset_right = 87.4443
+offset_bottom = 27.3101
+text = "20/20"
+
+[node name="PlayerBattle4" type="TextureRect" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AnimatedTexture_2cvry")
+expand_mode = 3
+
+[node name="CharacterStatus" type="Control" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle4/CharacterStatus"]
+layout_mode = 0
+offset_left = -102.326
+offset_right = 89.6744
+offset_bottom = 87.0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle4/CharacterStatus/MarginContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="CharacterStats" type="VBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle4/CharacterStatus/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="LifeBar" type="HBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle4/CharacterStatus/MarginContainer/GridContainer/CharacterStats"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle4/CharacterStatus/MarginContainer/GridContainer/CharacterStats/LifeBar"]
+z_index = 6
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+texture_under = ExtResource("5_w75uf")
+texture_progress = ExtResource("6_04xb1")
+script = ExtResource("7_2dcnh")
+
+[node name="Label" type="Label" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle4/CharacterStatus/MarginContainer/GridContainer/CharacterStats/LifeBar/TextureProgressBar"]
+layout_mode = 2
+offset_left = 44.4443
+offset_top = 5.16796
+offset_right = 87.4443
+offset_bottom = 28.168
+text = "20/20"
+
+[node name="StaminaBar" type="HBoxContainer" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle4/CharacterStatus/MarginContainer/GridContainer/CharacterStats"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle4/CharacterStatus/MarginContainer/GridContainer/CharacterStats/StaminaBar"]
+z_index = 6
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+texture_under = ExtResource("5_w75uf")
+texture_progress = ExtResource("22_fl3t8")
+script = ExtResource("7_2dcnh")
+
+[node name="Label" type="Label" parent="CanvasLayer/Players/MarginContainer/GridContainer/HBoxContainer/PlayerBattle4/CharacterStatus/MarginContainer/GridContainer/CharacterStats/StaminaBar/TextureProgressBar"]
+layout_mode = 0
+offset_left = 44.4443
+offset_top = 4.31006
+offset_right = 87.4443
+offset_bottom = 27.3101
+text = "20/20"

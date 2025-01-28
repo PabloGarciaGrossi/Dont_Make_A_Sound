@@ -35,7 +35,7 @@ func _physics_process(delta):
 
 func movement_control(delta):
 	if(current_hit_cooldown <= 0.0):
-		if(global_position.distance_to(current_following_character.global_position) < distance_to_follow_actual_character):
+		if(current_following_character != null and global_position.distance_to(current_following_character.global_position) < distance_to_follow_actual_character):
 			target = current_following_character.global_position
 			animated_sprite.play("walk")
 			if target.x > global_position.x:

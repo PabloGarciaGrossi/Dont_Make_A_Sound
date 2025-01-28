@@ -13,6 +13,8 @@ var current_voice_cd = 0
 
 @export var soundwave : PackedScene
 @export var animated_sprite : AnimatedSprite2D
+@export var UI_Interact : AnimationPlayer
+@export var UI_Sprite : Sprite2D
 var wave
 
 var record_bus_index: int
@@ -20,6 +22,18 @@ var record_effect : AudioEffectRecord
 var animTween : Tween = null
 
 @export var streamPlayer : AudioStreamPlayer2D
+var disabled = false
+		
+		
+func disable():
+	disabled = true
+	#visible = false
+	
+func enable():
+	UI_Sprite.scale = Vector2.ZERO
+	disabled = false
+	#visible = true
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	streamPlayer.play()
@@ -58,25 +72,26 @@ func get_input():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if current_collision_cd <= 0.0:
-		var player_input = get_input()
-		velocity = lerp(velocity, player_input * SPEED, ACCEL * delta)
+	if !disabled:
+		if current_collision_cd <= 0.0:
+			var player_input = get_input()
+			velocity = lerp(velocity, player_input * SPEED, ACCEL * delta)
 
-		
-		current_voice_cd += delta
-		var sample = AudioServer.get_bus_peak_volume_left_db(record_bus_index, 0)
-		var linear_sample = db_to_linear(sample)
-		#print(linear_sample)
-		
-		if Input.is_action_just_pressed("Interact") && current_voice_cd > COOLDOWN_VOICE:
-			wave = soundwave.instantiate()
-			get_parent().add_child(wave)
-			wave.set_values(position)
-			emit_signal("Sound_Emission", self, false)
-			current_voice_cd = 0
-	else:
-		current_collision_cd -= delta
-		velocity = lerp(velocity, Vector2.ZERO, 5.0 * delta)
+			
+			current_voice_cd += delta
+			var sample = AudioServer.get_bus_peak_volume_left_db(record_bus_index, 0)
+			var linear_sample = db_to_linear(sample)
+			#print(linear_sample)
+			
+			if Input.is_action_just_pressed("EmitSound") && current_voice_cd > COOLDOWN_VOICE:
+				wave = soundwave.instantiate()
+				get_parent().add_child(wave)
+				wave.set_values(position)
+				emit_signal("Sound_Emission", self, false)
+				current_voice_cd = 0
+		else:
+			current_collision_cd -= delta
+			velocity = lerp(velocity, Vector2.ZERO, 5.0 * delta)
 	move_and_slide()
 	
 
@@ -97,3 +112,10 @@ func _on_enemy_character_damage(dmg, position):
 		animTween.tween_property(animated_sprite, "modulate", Color.WHITE, COLLISION_CD/2.0).set_delay(COLLISION_CD/2.0)
 		
 	pass # Replace with function body.
+
+
+func orient(dir : Vector2):
+	if(dir.x > 0):
+		animated_sprite.scale = Vector2(1,1)
+	elif(dir.x < 0):
+		animated_sprite.scale = Vector2(-1,1)
